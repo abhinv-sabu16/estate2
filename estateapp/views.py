@@ -8,7 +8,6 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User
 from .models import Property 
 
-
 def contact(request):
     return render(request, 'contact.html')
 def index(request):
@@ -37,6 +36,14 @@ def review(request):
 def dashboard(request):
     return render(request,'dashboard.html')
 def addproperty(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        price = request.POST.get('price')
+        location = request.POST.get('location')
+        description = request.POST.get('description')
+        main_image = request.FILES.get('main_image')
+        sliding_images=request.FILES.get('sliding_images')
+
     return render(request,'addproperty.html')
 def message(request):
     # Load initial messages if needed
