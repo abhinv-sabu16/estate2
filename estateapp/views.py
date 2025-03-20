@@ -36,17 +36,31 @@ def review(request):
 def dashboard(request):
     return render(request,'dashboard.html')
 def addproperty(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         title = request.POST.get('title')
-        price = request.POST.get('price')
         location = request.POST.get('location')
+        price = request.POST.get('price')
         description = request.POST.get('description')
         main_image = request.FILES.get('main_image')
-        sliding_images=request.FILES.get('sliding_images')
+        sliding_images = request.FILES.getlist('sliding_images')  # Handling multiple images
 
-        Property.objects.create(title=title,price=price,location=location,description=description,main_image=main_image,sliding_images=sliding_images)
-        return redirect('success')
-    return render(request,'addproperty.html')
+        # Save the property
+        property_obj = Property.objects.create(
+            title=title,
+            location=location,
+            price=price,
+            description=description,
+            main_image=main_image
+        )
+
+        # Save multiple sliding images (optional if your model supports it)
+        for image in sliding_images:
+            property_obj.sliding_images = image
+            property_obj.save()
+
+        return redirect('dashboard')  # Redirect after saving
+
+    return render(request, 'addproperty.html')
 def message(request):
     # Load initial messages if needed
     # This can be replaced with actual logic to fetch messages from the database or API
