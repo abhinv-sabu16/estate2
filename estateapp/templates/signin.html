@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Sign In</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <style>
+        /* Background Styling */
+        body {
+            background: linear-gradient(135deg, #eddfdf, #aac5c8);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Sign-in Container */
+        .signin-container {
+            width: 400px;
+            background: hsla(0, 8%, 79%, 0.451);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h2 {
+            color: #060909;
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Input Field Styling */
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            font-size: 14px;
+            color: #0a0909;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        input:focus {
+            box-shadow: 0px 0px 8px rgba(15, 202, 223, 0.8);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Remember Me Checkbox */
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .remember-me input {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        /* Sign-in Button */
+        .input-group input[type="submit"] {
+            background: #0fcadf;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .input-group input[type="submit"]:hover {
+            background: #0ba4bf;
+            transform: scale(1.05);
+        }
+
+        /* Register Link */
+        .register-link {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .register-link a {
+            color: #0fcadf;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .signin-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signin-container">
+        <form action="{% url 'estateapp:signin' %}" method="post">
+            <h2>Sign In</h2>
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="remember-me">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Remember me</label>
+            </div>
+            <div class="input-group">
+                <input type="submit" value="Login">
+            </div>
+            <p class="register-link">Don't have an account? <a href="{% url 'estateapp:register' %}">Create one</a></p>
+        </form>
+    </div>
+</body>
+</html>
