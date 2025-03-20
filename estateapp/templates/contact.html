@@ -4,7 +4,7 @@
     
     <head>
     ...
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 
   <head>
@@ -83,8 +83,8 @@
               </div>
               <div class="col-md-6 col-sm-6 col-xs-6">
                 <div class="aa-header-right">
-                  <a href="register.html" class="aa-register">Register</a>
-                  <a href="signin.html" class="aa-login">Login</a>
+                  <a href="{% url 'estateapp:register' %}" class="aa-register">Register</a>
+                  <a href="{% url 'estateapp:signin' %}" class="aa-login">Login</a>
                 </div>
               </div>
             </div>
@@ -108,30 +108,22 @@
           </button>
           <!-- LOGO -->                                               
           <!-- Text based logo -->
-          <a class="navbar-brand aa-logo" href="index.html"> Home <span>Property</span></a>
+          <a class="navbar-brand aa-logo" href="{% url 'estateapp:index' %}"> Home <span>Property</span></a>
           <!-- Image based logo -->
           <!-- <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/logo.png" alt="logo"></a> -->                     
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
-            <li><a href="index.html">HOME</a></li>
+            <li><a href="{% url 'estateapp:index' %}">HOME</a></li>
              <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="properties.html">PROPERTIES <span class="caret"></span></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="{% url 'estateapp:properties' %}">PROPERTIES <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">                
-                <li><a href="properties.html">PROPERTIES</a></li>
-                <li><a href="properties-detail.html">PROPERTIES DETAIL</a></li>                                            
+                <li><a href="{% url 'estateapp:properties' %}">PROPERTIES</a></li>
+                <li><a href="{% url 'estateapp:propertydetail' %}">PROPERTIES DETAIL</a></li>                                            
               </ul>
-            </li>
-            <li><a href="gallery.html">GALLERY</a></li>                                        
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">BLOG <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">                
-                <li><a href="blog-archive.html">BLOG</a></li>
-                <li><a href="blog-single.html">BLOG DETAILS</a></li>                                            
-              </ul>
-            </li>
+            </li>                                    
             <li class="active"><a href="contact.html">CONTACT</a></li>
-            <li><a href="404.html">404 PAGE</a></li>            
+                    
           </ul>                          
         </div><!--/.nav-collapse -->       
       </div>          
