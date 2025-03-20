@@ -44,6 +44,8 @@ def addproperty(request):
         main_image = request.FILES.get('main_image')
         sliding_images=request.FILES.get('sliding_images')
 
+        Property.objects.create(title=title,price=price,location=location,description=description,main_image=main_image,sliding_images=sliding_images)
+        return redirect('success')
     return render(request,'addproperty.html')
 def message(request):
     # Load initial messages if needed

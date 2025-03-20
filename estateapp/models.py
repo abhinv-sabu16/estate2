@@ -19,8 +19,8 @@ class Property(models.Model):
     title = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=12, decimal_places=2)
-    description = mode
-    main_image =ls.TextField() models.ImageField(upload_to='properties/main_images/')
+    description = models.TextField() 
+    main_image =models.ImageField(upload_to='properties/main_images/')
     sliding_images = models.FileField(upload_to='properties/sliding_images/', blank=True, null=True)
 
     def __str__(self):
