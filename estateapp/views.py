@@ -184,3 +184,5 @@ def chatbot_view(request):
     return render(request, "chat.html", {"chat_history": request.session.get("chat_history", [])})
 
 
+def agentreg(request):
+    return render(request,'agentreg.html')
