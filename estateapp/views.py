@@ -162,3 +162,25 @@ def chat(request):
     return render(request, 'chat.html', {
         'room_name': 'myroom'  # This can alternatively be dynamic
     })
+
+from django.shortcuts import render
+from .utils import get_response
+import nltk
+# Create your views here.
+
+
+def chatbot_view(request):
+    if request.method == "POST":
+        user_message = request.POST.get("user_input", "").strip()
+        bot_response = get_response(user_message)
+
+        chat_history = request.session.get("chat_history", [])
+        chat_history.append({"user": user_message, "bot": bot_response})
+        request.session["chat_history"] = chat_history
+
+    else:
+        request.session["chat_history"] = []
+
+    return render(request, "chat.html", {"chat_history": request.session.get("chat_history", [])})
+
+

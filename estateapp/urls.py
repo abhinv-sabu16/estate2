@@ -36,6 +36,7 @@ urlpatterns = [
     path("verify-otp/", views.verify_otp, name="verify_otp"),
     path("dashboard", views.dashboard, name="dashboard"),
     path("addproperty/", views.addproperty, name="addproperty"),
+    path("chatbot/",views.chatbot_view,name='chatbot_view')
 
     
 
